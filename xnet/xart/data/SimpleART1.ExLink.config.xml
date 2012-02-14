@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<artLinkConfig id="SimpleART1.ExLink.config">
+	<capacity value="[0.0 .. 3.0]"/>
+	<capacityAttack value="[0.005 .. 0.005]"/>
+	<capacityDecay value="[0.001 .. 0.001]"/>
+	<strength value="[0.0 .. 6.0]"/>
+	<strengthAttack value="[0.05 .. 0.05]"/>
+	<strengthDecay value="[0.1 .. 0.1]"/>
+	<inhibitory initial="false"/>
+</artLinkConfig>

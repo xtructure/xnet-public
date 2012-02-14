@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<artNodeConfig id="node-config-example">
+   <energy value="[0.0 .. 5.0]"/>
+   <energyDecay value="[0.0 .. 1.0]"/>
+   <excitatoryScale value="[0.0 .. 2.0]"/>
+   <inhibitoryScale value="[0.0 .. 2.0]"/>
+</artNodeConfig>

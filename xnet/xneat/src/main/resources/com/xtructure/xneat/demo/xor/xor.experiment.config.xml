@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<NEATEvolutionConfigurationImpl id="xor.experiment.config">
+	<parameter class="IntegerXParameter" range="0"
+		id="biasNodeCount:[java.lang.Integer]" />
+	<parameter class="DoubleXParameter" range="0.2"
+		id="eliteProportion:[java.lang.Double]" />
+	<parameter class="IntegerXParameter" range="2"
+		id="inputNodeCount:[java.lang.Integer]" />
+	<parameter class="DoubleXParameter" range="0.75"
+		id="mutationProbability:[java.lang.Double]" />
+	<parameter class="IntegerXParameter" range="1"
+		id="outputNodeCount:[java.lang.Integer]" />
+	<parameter class="IntegerXParameter" range="50"
+		id="populationSize:[java.lang.Integer]" />
+</NEATEvolutionConfigurationImpl>

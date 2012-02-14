@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<artNetwork id="network-example">
+   <nodes>
+      <node id="A" config="default-node-config">
+         <energy value="[0.0 .. 10.0]" initial="0.0"/>
+      </node>
+      <node id="B" config="default-node-config" />
+   </nodes>
+   <links>
+      <link id="A->B" config="default-link-config" source="A" target="B">
+         <capacity value="1.0"/>
+         <strength value="1.0"/>
+      </link>
+   </links>
+</artNetwork>

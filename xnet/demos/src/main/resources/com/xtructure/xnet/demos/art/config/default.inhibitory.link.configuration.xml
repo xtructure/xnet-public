@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<artLinkConfig id="TwoNodeNetwork_DefaultInhibitoryLinkConfiguration">
+	<parameter
+		class="FloatXParameter"
+		range="[0.0 .. 6.0]" initial="1.0"
+		id="capacity:[java.lang.Float]"
+		description="the capacity of an ART link"
+		nullable="false"
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter"
+		range="0.005"
+		id="capacityAttack:[java.lang.Float]" 
+		description="the attack rate of the capacity of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter"
+		range="0.001"
+		id="capacityDecay:[java.lang.Float]" 
+		description="the decay rate of the capacity of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="BooleanXParameter"
+		initial="true"
+		id="inhibitoryFlag:[java.lang.Boolean]" 
+		description="an indicator of whether an ART link is inhibitory" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter
+		class="FloatXParameter"
+		range="[0.0 .. 3.0]" initial="1.0"
+		id="strength:[java.lang.Float]" 
+		description="the strength of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter"
+		range="0.05"
+		id="strengthAttack:[java.lang.Float]" 
+		description="the attack rate of the strength of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter"
+		range="0.1" 
+		id="strengthDecay:[java.lang.Float]" 
+		description="the decay rate of the strength of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+</artLinkConfig>

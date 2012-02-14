@@ -1,0 +1,287 @@
+<?xml version="1.0" ?>
+<artDemoCritter id="critter">
+	<nodes>
+		<node id="neg-utricle" config="default.art.node.config">
+			<energies>
+				<frontEnergy value="0.4648262262"/>
+				<backEnergy value="0.4648262262"/>
+			</energies>
+			<energyDecay value="0.1361709237"/>
+			<excitatoryScale value="1.932863355"/>
+			<inhibitoryScale value="1.957053542"/>
+			<oscillationOffset value="0"/>
+			<oscillationPeriod value="0"/>
+			<oscillationMinimum value="0"/>
+			<oscillationMaximum value="0"/>
+			<twitchProbability value="0"/>
+			<twitchMinimum value="0"/>
+			<twitchMaximum value="0"/>
+			<delay value="0"/>
+			<shift value="0"/>
+			<scale value="1.0"/>
+			<invert value="false"/>
+		</node>
+		<node id="pos-utricle" config="default.art.node.config">
+			<energies>
+				<frontEnergy value="0.5879608393"/>
+				<backEnergy value="0.5879608393"/>
+			</energies>
+			<energyDecay value="0.3203355074"/>
+			<excitatoryScale value="1.335585833"/>
+			<inhibitoryScale value="0.6118036509"/>
+			<oscillationOffset value="0"/>
+			<oscillationPeriod value="0"/>
+			<oscillationMinimum value="0"/>
+			<oscillationMaximum value="0"/>
+			<twitchProbability value="0"/>
+			<twitchMinimum value="0"/>
+			<twitchMaximum value="0"/>
+			<delay value="0"/>
+			<shift value="0"/>
+			<scale value="1.0"/>
+			<invert value="false"/>
+		</node>
+		<node id="pos-foot#energies" config="default.art.node.config">
+			<energies>
+				<frontEnergy value="0.5503780842"/>
+				<backEnergy value="0.5503780842"/>
+			</energies>
+			<energyDecay value="0.9565231204"/>
+			<excitatoryScale value="0.9140505791"/>
+			<inhibitoryScale value="1.862890482"/>
+			<oscillationOffset value="0"/>
+			<oscillationPeriod value="0"/>
+			<oscillationMinimum value="0"/>
+			<oscillationMaximum value="0"/>
+			<twitchProbability value="0"/>
+			<twitchMinimum value="0"/>
+			<twitchMaximum value="0"/>
+			<delay value="0"/>
+			<shift value="0"/>
+			<scale value="1.0"/>
+			<invert value="false"/>
+		</node>
+		<node id="neg-foot#energies" config="default.art.node.config">
+			<energies>
+				<frontEnergy value="0.938629508"/>
+				<backEnergy value="0.938629508"/>
+			</energies>
+			<energyDecay value="0.08464127779"/>
+			<excitatoryScale value="0.4014422894"/>
+			<inhibitoryScale value="0.9408202171"/>
+			<oscillationOffset value="0"/>
+			<oscillationPeriod value="0"/>
+			<oscillationMinimum value="0"/>
+			<oscillationMaximum value="0"/>
+			<twitchProbability value="0"/>
+			<twitchMinimum value="0"/>
+			<twitchMaximum value="0"/>
+			<delay value="0"/>
+			<shift value="0"/>
+			<scale value="1.0"/>
+			<invert value="false"/>
+		</node>
+		<node id="nose" config="default.art.node.config">
+			<energies>
+				<frontEnergy value="1.109272122"/>
+				<backEnergy value="1.109272122"/>
+			</energies>
+			<energyDecay value="0.8943138719"/>
+			<excitatoryScale value="1.860580564"/>
+			<inhibitoryScale value="0.9004559517"/>
+			<oscillationOffset value="0"/>
+			<oscillationPeriod value="0"/>
+			<oscillationMinimum value="0"/>
+			<oscillationMaximum value="0"/>
+			<twitchProbability value="0"/>
+			<twitchMinimum value="0"/>
+			<twitchMaximum value="0"/>
+			<delay value="0"/>
+			<shift value="0"/>
+			<scale value="1.0"/>
+			<invert value="false"/>
+		</node>
+	</nodes>
+	<links>
+		<link id="pos-foot#energies ~ neg-utricle" source="pos-foot#energies" target="neg-utricle" config="default.art.link.config">
+			<capacity value="1.069037914"/>
+			<capacityAttack value="0.8992983103"/>
+			<capacityDecay value="0.6743898392"/>
+			<strength value="1.06562376"/>
+			<strengthAttack value="0.6908019185"/>
+			<strengthDecay value="0.5243814588"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="pos-foot#energies ~ neg-foot#energies" source="pos-foot#energies" target="neg-foot#energies" config="default.art.link.config">
+			<capacity value="1.509501815"/>
+			<capacityAttack value="0.252051115"/>
+			<capacityDecay value="0.8739669323"/>
+			<strength value="1.092387915"/>
+			<strengthAttack value="0.7593325973"/>
+			<strengthDecay value="0.3802970052"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="nose ~ neg-foot#energies" source="nose" target="neg-foot#energies" config="default.art.link.config">
+			<capacity value="0.7555484772"/>
+			<capacityAttack value="0.7788664699"/>
+			<capacityDecay value="0.2492386103"/>
+			<strength value="0.4167233706"/>
+			<strengthAttack value="0.1628606319"/>
+			<strengthDecay value="0.3222645521"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-utricle ~ pos-utricle" source="neg-utricle" target="pos-utricle" config="default.art.link.config">
+			<capacity value="0.9374556541"/>
+			<capacityAttack value="0.07233804464"/>
+			<capacityDecay value="0.3528296947"/>
+			<strength value="1.088400841"/>
+			<strengthAttack value="0.8941666484"/>
+			<strengthDecay value="0.6013091803"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="pos-foot#energies ~ nose" source="pos-foot#energies" target="nose" config="default.art.link.config">
+			<capacity value="1.291591048"/>
+			<capacityAttack value="0.688077569"/>
+			<capacityDecay value="0.6083109379"/>
+			<strength value="0.1404504776"/>
+			<strengthAttack value="0.1076501012"/>
+			<strengthDecay value="0.7417372465"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-utricle ~ neg-foot#energies" source="neg-utricle" target="neg-foot#energies" config="default.art.link.config">
+			<capacity value="1.944884896"/>
+			<capacityAttack value="0.2541670799"/>
+			<capacityDecay value="0.3382378221"/>
+			<strength value="1.120153785"/>
+			<strengthAttack value="0.9569352269"/>
+			<strengthDecay value="0.1323770285"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="pos-utricle ~ neg-utricle" source="pos-utricle" target="neg-utricle" config="default.art.link.config">
+			<capacity value="1.001026988"/>
+			<capacityAttack value="0.3425267935"/>
+			<capacityDecay value="0.416636765"/>
+			<strength value="1.744312644"/>
+			<strengthAttack value="0.6948940158"/>
+			<strengthDecay value="0.8315736651"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-foot#energies ~ neg-utricle" source="neg-foot#energies" target="neg-utricle" config="default.art.link.config">
+			<capacity value="1.612094402"/>
+			<capacityAttack value="0.2587547898"/>
+			<capacityDecay value="0.345726788"/>
+			<strength value="0.8515295982"/>
+			<strengthAttack value="0.9871294498"/>
+			<strengthDecay value="0.8147702813"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="pos-utricle ~ neg-foot#energies" source="pos-utricle" target="neg-foot#energies" config="default.art.link.config">
+			<capacity value="1.438944936"/>
+			<capacityAttack value="0.7570995688"/>
+			<capacityDecay value="0.575080514"/>
+			<strength value="1.53881681"/>
+			<strengthAttack value="0.9290542006"/>
+			<strengthDecay value="0.6027215123"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-utricle ~ pos-foot#energies" source="neg-utricle" target="pos-foot#energies" config="default.art.link.config">
+			<capacity value="1.369636655"/>
+			<capacityAttack value="0.2534806132"/>
+			<capacityDecay value="0.03887057304"/>
+			<strength value="1.66513133"/>
+			<strengthAttack value="0.758345902"/>
+			<strengthDecay value="0.6967718601"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="pos-utricle ~ nose" source="pos-utricle" target="nose" config="default.art.link.config">
+			<capacity value="1.194313645"/>
+			<capacityAttack value="0.08143353462"/>
+			<capacityDecay value="0.6324609518"/>
+			<strength value="1.499484181"/>
+			<strengthAttack value="0.5489681363"/>
+			<strengthDecay value="0.6862190962"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-foot#energies ~ pos-foot#energies" source="neg-foot#energies" target="pos-foot#energies" config="default.art.link.config">
+			<capacity value="1.155230641"/>
+			<capacityAttack value="0.2536463141"/>
+			<capacityDecay value="0.05819368362"/>
+			<strength value="1.292768598"/>
+			<strengthAttack value="0.7505776882"/>
+			<strengthDecay value="0.2573505044"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="pos-foot#energies ~ pos-utricle" source="pos-foot#energies" target="pos-utricle" config="default.art.link.config">
+			<capacity value="1.417209387"/>
+			<capacityAttack value="0.1015865803"/>
+			<capacityDecay value="0.7383895516"/>
+			<strength value="1.928693295"/>
+			<strengthAttack value="0.06722569466"/>
+			<strengthDecay value="0.8927826881"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-foot#energies ~ pos-utricle" source="neg-foot#energies" target="pos-utricle" config="default.art.link.config">
+			<capacity value="1.062333703"/>
+			<capacityAttack value="0.8431844711"/>
+			<capacityDecay value="0.6154389977"/>
+			<strength value="1.125629067"/>
+			<strengthAttack value="0.5676541328"/>
+			<strengthDecay value="0.7972179055"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="nose ~ neg-utricle" source="nose" target="neg-utricle" config="default.art.link.config">
+			<capacity value="1.48825264"/>
+			<capacityAttack value="0.3855695128"/>
+			<capacityDecay value="0.3346972466"/>
+			<strength value="1.233713984"/>
+			<strengthAttack value="0.3552484512"/>
+			<strengthDecay value="0.8046963215"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-foot#energies ~ nose" source="neg-foot#energies" target="nose" config="default.art.link.config">
+			<capacity value="0.9787294865"/>
+			<capacityAttack value="0.5299389958"/>
+			<capacityDecay value="0.6458621025"/>
+			<strength value="1.429223776"/>
+			<strengthAttack value="0.1272885203"/>
+			<strengthDecay value="0.1014232039"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="nose ~ pos-utricle" source="nose" target="pos-utricle" config="default.art.link.config">
+			<capacity value="1.155471087"/>
+			<capacityAttack value="0.858278811"/>
+			<capacityDecay value="0.9303278327"/>
+			<strength value="0.7726429701"/>
+			<strengthAttack value="0.1690565348"/>
+			<strengthDecay value="0.3793635368"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="neg-utricle ~ nose" source="neg-utricle" target="nose" config="default.art.link.config">
+			<capacity value="1.963599443"/>
+			<capacityAttack value="0.8526916504"/>
+			<capacityDecay value="0.5187520385"/>
+			<strength value="1.424805403"/>
+			<strengthAttack value="0.6751343608"/>
+			<strengthDecay value="0.3960277438"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="nose ~ pos-foot#energies" source="nose" target="pos-foot#energies" config="default.art.link.config">
+			<capacity value="1.004524827"/>
+			<capacityAttack value="0.1521682143"/>
+			<capacityDecay value="0.7341530323"/>
+			<strength value="0.03695070744"/>
+			<strengthAttack value="0.5545219183"/>
+			<strengthDecay value="0.6005754471"/>
+			<inhibitory value="false"/>
+		</link>
+		<link id="pos-utricle ~ pos-foot#energies" source="pos-utricle" target="pos-foot#energies" config="default.art.link.config">
+			<capacity value="1.964036703"/>
+			<capacityAttack value="0.1024207473"/>
+			<capacityDecay value="0.7190362811"/>
+			<strength value="0.8017926216"/>
+			<strengthAttack value="0.9765280485"/>
+			<strengthDecay value="0.06324529648"/>
+			<inhibitory value="false"/>
+		</link>
+	</links>
+</artDemoCritter>

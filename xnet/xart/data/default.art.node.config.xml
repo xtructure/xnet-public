@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<NodeConfiguration id="default.art.node.config">
+	<com.xtructure.art.model.node.Delay$Parameter range="0"/>
+	<com.xtructure.art.model.node.Energy$Parameter range="[0.0 .. 2.0]"/>
+	<com.xtructure.art.model.node.EnergyDecay$Parameter range="[0.0 .. 1.0]"/>
+	<com.xtructure.art.model.node.ExcitatoryScale$Parameter range="[0.0 .. 2.0]"/>
+	<com.xtructure.art.model.node.InhibitoryScale$Parameter range="[0.0 .. 2.0]"/>
+	<com.xtructure.art.model.node.InvertFlag$Parameter initial="false"/>
+	<com.xtructure.art.model.node.OscillationMaximum$Parameter range="0.0"/>
+	<com.xtructure.art.model.node.OscillationMinimum$Parameter range="0.0"/>
+	<com.xtructure.art.model.node.OscillationOffset$Parameter range="0"/>
+	<com.xtructure.art.model.node.OscillationPeriod$Parameter range="0"/>
+	<com.xtructure.art.model.node.Scale$Parameter range="1.0"/>
+	<com.xtructure.art.model.node.Shift$Parameter range="0.0"/>
+	<com.xtructure.art.model.node.TwitchMaximum$Parameter range="0.0"/>
+	<com.xtructure.art.model.node.TwitchMinimum$Parameter range="0.0"/>
+	<com.xtructure.art.model.node.TwitchProbability$Parameter range="0.0"/>
+</NodeConfiguration>

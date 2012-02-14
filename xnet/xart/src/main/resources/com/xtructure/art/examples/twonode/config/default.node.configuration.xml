@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artNodeConfig id="TwoNodeNetwork_DefaultNodeConfiguration">
+	<energy range="[0.0 .. 6.0]" initial="2.0"/>
+	<energyDecay range="[0.0 .. 1.0]"/>
+	<excitatoryScale range="[0.0 .. 2.0]"/>
+	<inhibitoryScale range="[0.0 .. 2.0]"/>
+	<oscillationMinimum range="0.0"/>
+	<oscillationMaximum range="0.0"/>
+	<oscillationOffset range="0"/>
+	<oscillationPeriod range="0"/>
+	<twitchMinimum range="0.0"/>
+	<twitchMaximum range="0.0"/>
+	<twitchProbability range="0.0"/>
+	<delay range="0"/>
+	<shift range="0.0"/>
+	<scale range="1.0"/>
+	<invert range="false"/>
+</artNodeConfig>

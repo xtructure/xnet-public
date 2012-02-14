@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artNetwork id="TwoNodeNetwork_Inputs">
+		<node id="TwoNodeNetwork_Inputs:[0, 0]" config="NetworkInputs_DefaultNodeConfiguration">
+			<energies>
+				<frontEnergy value="1.0"/>
+				<backEnergy value="1.0"/>
+			</energies>
+			<energyDecay value="1.0"/>
+		</node>
+</artNetwork>

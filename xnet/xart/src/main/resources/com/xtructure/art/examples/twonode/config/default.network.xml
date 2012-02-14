@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<artNetwork id="TwoNodeNetwork">
+		<node id="TwoNodeNetwork:[0, 0]" config="TwoNodeNetwork_DefaultNodeConfiguration">
+			<energies>
+				<frontEnergy value="3.0"/>
+				<backEnergy value="3.0"/>
+			</energies>
+			<energyDecay value="0.3"/>
+			<excitatoryScale value="0.15"/>
+			<inhibitoryScale value="0.15"/>
+		</node>
+		<node id="TwoNodeNetwork:[0, 1]" config="TwoNodeNetwork_DefaultNodeConfiguration">
+			<energies>
+				<frontEnergy value="3.0"/>
+				<backEnergy value="3.0"/>
+			</energies>
+			<energyDecay value="0.3"/>
+			<excitatoryScale value="0.15"/>
+			<inhibitoryScale value="0.15"/>
+		</node>
+		<link id="TwoNodeNetwork:[1, 0]" source="TwoNodeNetwork:[0, 0]" target="TwoNodeNetwork:[0, 1]" config="TwoNodeNetwork_DefaultExcitatoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<link id="TwoNodeNetwork:[1, 1]" source="TwoNodeNetwork:[0, 1]" target="TwoNodeNetwork:[0, 0]" config="TwoNodeNetwork_DefaultInhibitoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+</artNetwork>

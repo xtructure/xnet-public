@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<NEATEvolutionConfigurationImpl id="neatEvolutionConfiguration">
+	<parameter class="IntegerXParameter" range="1"
+		id="biasNodeCount:[java.lang.Integer]" />
+	<parameter class="DoubleXParameter" range="1.0"
+		id="compatibilityDisjointCoefficient:[java.lang.Double]" />
+	<parameter class="DoubleXParameter" range="1.0"
+		id="compatibilityExcessCoefficient:[java.lang.Double]" />
+	<parameter class="DoubleXParameter" range="0.1"
+		id="compatibilityWeightDeltaCoefficient:[java.lang.Double]" />
+	<parameter class="DoubleXParameter" range="0.2"
+		id="eliteProportion:[java.lang.Double]" />
+	<parameter class="DoubleXParameter" range="1.0"
+		id="initialConnectionProbability:[java.lang.Double]" />
+	<parameter class="IntegerXParameter" range="1"
+		id="inputNodeCount:[java.lang.Integer]" />
+	<parameter class="DoubleXParameter" range="0.01"
+		id="interspeciesCrossoverProbability:[java.lang.Double]" />
+	<parameter class="DoubleXParameter" range="0.5"
+		id="mutationProbability:[java.lang.Double]" />
+	<parameter class="IntegerXParameter" range="1"
+		id="outputNodeCount:[java.lang.Integer]" />
+	<parameter class="IntegerXParameter" range="100"
+		id="populationSize:[java.lang.Integer]" />
+	<parameter class="IntegerXParameter" range="100"
+		id="speciesDropoffAge:[java.lang.Long]" />
+	<parameter class="LongXParameter" range="12"
+		id="targatSpeciesCountMax:[java.lang.Integer]" />
+	<parameter class="IntegerXParameter" range="6"
+		id="targetSpeciesCountMin:[java.lang.Integer]" />
+	<parameter class="ConditionXParameter"
+		id="terminationCondition:[com.xtructure.xutil.valid.Condition]">
+		<value class="com.xtructure.xutil.valid.IsNothingCondition" />
+	</parameter>
+</NEATEvolutionConfigurationImpl>

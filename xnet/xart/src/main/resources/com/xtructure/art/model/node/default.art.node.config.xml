@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<artNodeConfig id="default.art.node.config">
+	<parameter 
+		class="IntegerXParameter" 
+		range="0" 
+		id="delay:[java.lang.Integer]" 
+		description="the delay of an ART node" 
+		nullable="false"
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="[0.0 .. 2.0]" 
+		id="energy:[java.lang.Float]" 
+		description="the energy of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="[0.0 .. 1.0]" 
+		id="energyDecay:[java.lang.Float]" 
+		description="the energy decay rate of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="[0.0 .. 2.0]" 
+		id="excitatoryScale:[java.lang.Float]" 
+		description="the scaling factor for excitatory input" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="[0.0 .. 2.0]" 
+		id="inhibitoryScale:[java.lang.Float]" 
+		description="the scaling factor for inhibitory input" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="BooleanXParameter" 
+		range="false" 
+		id="invert:[java.lang.Boolean]" 
+		description="the invert flag of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="0.0" 
+		id="oscillationMaximum:[java.lang.Float]"
+		description="the oscillation maximum of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="0.0" 
+		id="oscillationMinimum:[java.lang.Float]" 
+		description="the oscillation minimum of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="IntegerXParameter" 
+		range="0" 
+		id="oscillationOffset:[java.lang.Integer]" 
+		description="the oscillation offset of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="IntegerXParameter" 
+		range="0" 
+		id="oscillationPeriod:[java.lang.Integer]" 
+		description="the oscillation period of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="1.0" 
+		id="scale:[java.lang.Float]" 
+		description="the scale of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="0.0" 
+		id="shift:[java.lang.Float]" 
+		description="the shift of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="0.0" 
+		id="twitchMaximum:[java.lang.Float]" 
+		description="the twitch maximum of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="0.0" 
+		id="twitchMinimum:[java.lang.Float]" 
+		description="the twitch minimum of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="FloatXParameter" 
+		range="0.0" 
+		id="twitchProbability:[java.lang.Float]" 
+		description="the twitch probability of an ART node" 
+		nullable="false" 
+		mutable="true"/>
+</artNodeConfig>

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<artLinkConfig id="art.link.config">
+   <capacity value="[0.0 .. 2.0]"/>
+   <capacityAttack value="[0.0 .. 1.0]"/>
+   <capacityDecay value="[0.0 .. 1.0]"/>
+   <strength value="[0.0 .. 2.0]"/>
+   <strengthAttack value="[0.0 .. 1.0]"/>
+   <strengthDecay value="[0.0 .. 1.0]"/>
+   <inhibitory initial="false"/>
+</artLinkConfig>

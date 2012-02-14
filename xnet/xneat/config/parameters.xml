@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<NEATEvolutionConfigurationImpl id="xor.neat.evolution.config">
+	<parameter class="IntegerXParameter" range="0" id="biasNodeCount:[java.lang.Integer]" description="number of bias nodes in phenotype networks" nullable="false" mutable="true"/>
+	<parameter class="DoubleXParameter" range="1.0" id="compatibilityDisjointCoefficient:[java.lang.Double]" description="disjoint gene coefficient for calculating genome compatibility" nullable="false" mutable="true"/>
+	<parameter class="DoubleXParameter" range="1.0" id="compatibilityExcessCoefficient:[java.lang.Double]" description="excess gene coefficient for calculating genome compatibility" nullable="false" mutable="true"/>
+	<parameter class="DoubleXParameter" range="0.1" id="compatibilityWeightDeltaCoefficient:[java.lang.Double]" description="gene weight delta coefficient for calculating genome compatibility" nullable="false" mutable="true"/>
+	<parameter class="DoubleXParameter" range="0.2" id="eliteProportion:[java.lang.Double]" description="proportion of surviving genomes in a species per generation" nullable="false" mutable="true"/>
+	<parameter class="DoubleXParameter" range="1.0" id="initialConnectionProbability:[java.lang.Double]" description="when creating initial genome, likelihood an input is linked to an output" nullable="false" mutable="true"/>
+	<parameter class="IntegerXParameter" range="2" id="inputNodeCount:[java.lang.Integer]" description="number of input nodes in phenotype networks" nullable="false" mutable="true"/>
+	<parameter class="DoubleXParameter" range="0.01" id="interspeciesCrossoverProbability:[java.lang.Double]" description="likelihood a genome will crossover with one of a different species" nullable="false" mutable="true"/>
+	<parameter class="DoubleXParameter" range="0.9" id="mutationProbability:[java.lang.Double]" description="the probability a selected genome will be mutated" nullable="false" mutable="true"/>
+	<parameter class="IntegerXParameter" range="1" id="outputNodeCount:[java.lang.Integer]" description="number of output nodes in phenotype networks" nullable="false" mutable="true"/>
+	<parameter class="IntegerXParameter" range="100" id="populationSize:[java.lang.Integer]" description="the number of genomes in the population" nullable="false" mutable="true"/>
+	<parameter class="LongXParameter" range="200" id="speciesDropoffAge:[java.lang.Long]" description="number of generations to wait for improvement before species die" nullable="false" mutable="true"/>
+	<parameter class="IntegerXParameter" range="12" id="targatSpeciesCountMax:[java.lang.Integer]" description="maximum acceptable number of species" nullable="false" mutable="true"/>
+	<parameter class="IntegerXParameter" range="6" id="targetSpeciesCountMin:[java.lang.Integer]" description="minimum acceptable number of species" nullable="false" mutable="true"/>
+	<parameter class="ConditionXParameter" id="terminationCondition:[com.xtructure.xutil.valid.Condition]" description="the condition which, when satisfied, indicates the end of evolution" nullable="false" mutable="true">
+		<value class="com.xtructure.xevolution.config.impl.HighestFitnessIsAtLeastCondition">
+			<value class="java.lang.Double" value="4.0"/>
+		</value>
+	</parameter>
+</NEATEvolutionConfigurationImpl>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<artLinkConfig id="TwoNodeNetwork_Network1InhibitoryLinkConfiguration">
+	<capacity range="1.0"/>
+	<strength range="1.0"/>
+	<inhibitory initial="true"/>
+</artLinkConfig>

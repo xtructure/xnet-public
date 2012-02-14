@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<EvolutionConfigurationImpl id="default.evolution.config">
+	<parameter type="DoubleXParameter" range="0.5" id="mutationProbability:[java.lang.Double]" description="the probability a selected genome will be mutated" nullable="false" mutable="true"/>
+	<parameter type="IntegerXParameter" range="50" id="populationSize:[java.lang.Integer]" description="the number of genomes in the population" nullable="false" mutable="true"/>
+</EvolutionConfigurationImpl>

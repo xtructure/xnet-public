@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<LinkConfiguration id="default.art.link.config">
+	<com.xtructure.art.model.link.Capacity$Parameter  range="[0.0 .. 2.0]"/>
+	<com.xtructure.art.model.link.CapacityAttack$Parameter range="[0.0 .. 1.0]"/>
+	<com.xtructure.art.model.link.CapacityDecay$Parameter range="[0.0 .. 1.0]"/>
+	<com.xtructure.art.model.link.InhibitoryFlag$Parameter initial="false"/>
+	<com.xtructure.art.model.link.Strength$Parameter range="[0.0 .. 2.0]"/>
+	<com.xtructure.art.model.link.StrengthAttack$Parameter range="[0.0 .. 1.0]"/>
+	<com.xtructure.art.model.link.StrengthDecay$Parameter range="[0.0 .. 1.0]"/>
+</LinkConfiguration>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<EvolutionConfigurationImpl id="default.evolution.config">
+	<parameter class="DoubleXParameter" range="0.5" id="mutationProbability:[java.lang.Double]" description="the probability a selected genome will be mutated" nullable="false" mutable="true"/>
+	<parameter class="IntegerXParameter" range="100" id="populationSize:[java.lang.Integer]" description="the number of genomes in the population" nullable="false" mutable="true"/>
+	<parameter class="ConditionXParameter" id="terminationCondition:[com.xtructure.xutil.valid.Condition]" description="the condition which, when satisfied, indicates the end of evolution" nullable="false" mutable="true">
+		<value class="com.xtructure.xutil.valid.IsNothingCondition"/>
+	</parameter>
+</EvolutionConfigurationImpl>

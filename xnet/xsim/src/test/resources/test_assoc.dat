@@ -1,0 +1,6 @@
+TEST_COMPONENT_ID:0->TEST_COMPONENT_ID:0
+S1:1->T1:1
+S2->T2
+#comment
+
+can't parse this line.

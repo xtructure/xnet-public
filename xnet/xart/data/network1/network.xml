@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<artNetwork id="TwoNodeNetwork">
+	<nodes>
+		<!-- node 1 -->
+		<node id="TwoNodeNetwork:[0, 0]" config="TwoNodeNetwork_DefaultNodeConfiguration">
+			<energies>
+				<frontEnergy value="3.0"/>
+				<backEnergy value="3.0"/>
+			</energies>
+			<energyDecay value="0.3"/>
+			<excitatoryScale value="0.16666"/>
+			<inhibitoryScale value="0.16666"/>
+		</node>
+		<!-- node 2 -->
+		<node id="TwoNodeNetwork:[0, 1]" config="TwoNodeNetwork_DefaultNodeConfiguration">
+			<energies>
+				<frontEnergy value="3.0"/>
+				<backEnergy value="3.0"/>
+			</energies>
+			<energyDecay value="0.3"/>
+			<excitatoryScale value="0.16666"/>
+			<inhibitoryScale value="0.16666"/>
+		</node>
+		<!-- node 3 -->
+		<node id="TwoNodeNetwork:[0, 2]" config="TwoNodeNetwork_DefaultNodeConfiguration">
+			<energies>
+				<frontEnergy value="3.0"/>
+				<backEnergy value="3.0"/>
+			</energies>
+			<energyDecay value="0.3"/>
+			<excitatoryScale value="0.16666"/>
+			<inhibitoryScale value="0.16666"/>
+		</node>
+	</nodes>
+	<links>
+		<!-- node 1 left excitatory link -->
+		<link id="TwoNodeNetwork:[1, 0]" source="TwoNodeNetwork:[0, 0]" target="TwoNodeNetwork:[0, 1]" config="TwoNodeNetwork_DefaultExcitatoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 1 right excitatory link -->
+		<link id="TwoNodeNetwork:[1, 1]" source="TwoNodeNetwork:[0, 0]" target="TwoNodeNetwork:[0, 2]" config="TwoNodeNetwork_DefaultExcitatoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 1 left inhibitory link -->
+		<link id="TwoNodeNetwork:[1, 2]" source="TwoNodeNetwork:[0, 0]" target="TwoNodeNetwork:[0, 2]" config="TwoNodeNetwork_Network1InhibitoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 1 right inhibitory link -->
+		<link id="TwoNodeNetwork:[1, 3]" source="TwoNodeNetwork:[0, 0]" target="TwoNodeNetwork:[0, 1]" config="TwoNodeNetwork_Network1InhibitoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		
+		<!-- node 2 left excitatory link -->
+		<link id="TwoNodeNetwork:[1, 4]" source="TwoNodeNetwork:[0, 1]" target="TwoNodeNetwork:[0, 2]" config="TwoNodeNetwork_DefaultExcitatoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 2 right excitatory link -->
+		<link id="TwoNodeNetwork:[1, 5]" source="TwoNodeNetwork:[0, 1]" target="TwoNodeNetwork:[0, 0]" config="TwoNodeNetwork_DefaultExcitatoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 2 left inhibitory link -->
+		<link id="TwoNodeNetwork:[1, 6]" source="TwoNodeNetwork:[0, 1]" target="TwoNodeNetwork:[0, 0]" config="TwoNodeNetwork_Network1InhibitoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 2 right inhibitory link -->
+		<link id="TwoNodeNetwork:[1, 7]" source="TwoNodeNetwork:[0, 1]" target="TwoNodeNetwork:[0, 2]" config="TwoNodeNetwork_Network1InhibitoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		
+		<!-- node 3 left excitatory link -->
+		<link id="TwoNodeNetwork:[1, 8]" source="TwoNodeNetwork:[0, 2]" target="TwoNodeNetwork:[0, 0]" config="TwoNodeNetwork_DefaultExcitatoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 3 right excitatory link -->
+		<link id="TwoNodeNetwork:[1, 9]" source="TwoNodeNetwork:[0, 2]" target="TwoNodeNetwork:[0, 1]" config="TwoNodeNetwork_DefaultExcitatoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 3 left inhibitory link -->
+		<link id="TwoNodeNetwork:[1, 10]" source="TwoNodeNetwork:[0, 2]" target="TwoNodeNetwork:[0, 1]" config="TwoNodeNetwork_Network1InhibitoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+		<!-- node 3 right inhibitory link -->
+		<link id="TwoNodeNetwork:[1, 11]" source="TwoNodeNetwork:[0, 2]" target="TwoNodeNetwork:[0, 0]" config="TwoNodeNetwork_Network1InhibitoryLinkConfiguration">
+			<capacity value="1.0"/>
+			<strength value="1.0"/>
+		</link>
+	</links>
+	<sourceIds/>
+	<targetIds/>
+</artNetwork>

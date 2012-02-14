@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <parent>
+    <groupId>com.xtructure.xnet</groupId>
+    <artifactId>xnet</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.xtructure.xnet.demos</groupId>
+  <artifactId>demos</artifactId>
+  <packaging>jar</packaging>
+  <name>demos</name>
+  <url>http://www.xtructure.com</url>
+
+  <dependencies>
+  	<dependency>
+      <groupId>com.xtructure.xnet.xart</groupId>
+	  <artifactId>xart</artifactId>
+	  <version>${project.version}</version>
+	</dependency>
+  	<dependency>
+      <groupId>com.xtructure.xnet.xbatch</groupId>
+	  <artifactId>xbatch</artifactId>
+	  <version>${project.version}</version>
+	</dependency>
+  	<dependency>
+      <groupId>com.xtructure.xnet.xevolution</groupId>
+	  <artifactId>xevolution</artifactId>
+	  <version>${project.version}</version>
+	</dependency>
+  	<dependency>
+      <groupId>com.xtructure.xnet.xneat</groupId>
+	  <artifactId>xneat</artifactId>
+	  <version>${project.version}</version>
+	</dependency>
+  	<dependency>
+      <groupId>com.xtructure.xnet.xsim</groupId>
+	  <artifactId>xsim</artifactId>
+	  <version>${project.version}</version>
+	</dependency>
+  	<dependency>
+      <groupId>com.xtructure.xnet.xutil</groupId>
+	  <artifactId>xutil</artifactId>
+	  <version>${project.version}</version>
+	</dependency>
+  </dependencies>
+  
+</project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<artLinkConfig id="default.loose.link.config">
+	<parameter
+		class="FloatXParameter"
+		range="[0.0 .. 6.0]"	initial="1.2"
+		id="capacity:[java.lang.Float]"
+		description="the capacity of an ART link"
+		nullable="false"
+		mutable="true"/>	
+	<!-- 8.0 +/- 0.05 -->
+	<parameter 
+		class="FloatXParameter"
+		range="[7.60 .. 8.40]"	
+		id="capacityAttack:[java.lang.Float]" 
+		description="the attack rate of the capacity of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+	<!-- 0.4 +/- 0.05 -->
+	<parameter 
+		class="FloatXParameter"
+		range="[0.38 .. 0.42]"
+		id="capacityDecay:[java.lang.Float]" 
+		description="the decay rate of the capacity of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter 
+		class="BooleanXParameter"
+		range="[false .. true]" 
+		id="inhibitoryFlag:[java.lang.Boolean]" 
+		description="an indicator of whether an ART link is inhibitory" 
+		nullable="false" 
+		mutable="true"/>
+	<parameter
+		 class="FloatXParameter"
+		range="[0.0 .. 6.0]"	initial="1.2" 
+		id="strength:[java.lang.Float]" 
+		description="the strength of an ART link" 
+		nullable="false" 
+		mutable="true"/>	
+	<!-- 8.0 +/- 0.05 -->
+	<parameter 
+		class="FloatXParameter"
+		range="[7.60 .. 8.40]"	
+		id="strengthAttack:[java.lang.Float]" 
+		description="the attack rate of the strength of an ART link" 
+		nullable="false" 
+		mutable="true"/>	
+	<!-- 0.4 +/- 0.05 -->
+	<parameter 
+		class="FloatXParameter"
+		range="[0.38 .. 0.42]"	
+		id="strengthDecay:[java.lang.Float]" 
+		description="the decay rate of the strength of an ART link" 
+		nullable="false" 
+		mutable="true"/>
+</artLinkConfig>

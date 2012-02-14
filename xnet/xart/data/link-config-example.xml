@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<artLinkConfig id="node-config-example">
+   <capacity value="[0.0 .. 10.0]"/>
+   <strength value="[0.0 .. 10.0]"/>
+   <inhibitory initial="false"/>
+</artLinkConfig>

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<lifeDemoConfig>
+   <gridWidth initial="9"/>
+   <gridHeight initial="5"/>
+   <populationProbability initial="[0.25 .. 0.50]"/>
+   <populatedColor value="yellow"/>
+   <unpopulatedColor value="rgba=[32,128,32,128]" />
+   <topFile value="empty-top-9x5.xml" />
+   <bottomFile value="glider-bottom-9x5.xml" />
+</lifeDemoConfig>
