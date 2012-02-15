@@ -117,7 +117,6 @@
 	</dependency>
 	</dependencies>
 	
-	<!-- ADD NEW MODULES HERE -->
 	<modules>
 		<module>demos</module>
 		<module>xart</module>
@@ -133,12 +132,51 @@
      <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
       <configuration>
        <source>1.6</source>
        <target>1.6</target>
       </configuration>
-     </plugin>
+     </plugin>   
+     <plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-release-plugin</artifactId>        
+	  <version>2.2.2</version>
+	</plugin>   
+     <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id> 
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
    </plugins>
  </build>
- 
+	<distributionManagement>
+		<repository>
+			<id>repo</id>
+			<url>file://tmp/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot-repo</id>
+			<url>file://tmp/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<scm>
+	  <connection>scm:git:git@github.com:xtructure/xnet-public.git</connection>
+	  <developerConnection>scm:git:git@github.com:xtructure/xnet-public.git</developerConnection>
+	  <url>https://github.com/xtructure/xnet-public</url>
+	</scm>
 </project>
