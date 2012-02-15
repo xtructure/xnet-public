@@ -59,7 +59,7 @@ public class PopulationImpl extends AbstractPopulation<String> {
 	}
 
 	private static final class PopulationImplXmlFormat extends AbstractXmlFormat<String, PopulationImpl> {
-		private static final Element<Genome<String>>	GENOME_ELEMENT	= XmlUnit.newElement("genome", GenomeImpl.class);
+		private static final Element<Genome<String>>	GENOME_ELEMENT	= XmlUnit.<Genome<String>,GenomeImpl>newElement("genome", GenomeImpl.class);
 
 		protected PopulationImplXmlFormat() {
 			super(PopulationImpl.class);

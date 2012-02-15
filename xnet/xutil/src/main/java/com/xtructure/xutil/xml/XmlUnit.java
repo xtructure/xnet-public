@@ -49,7 +49,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 	 * @return the new {@link Attribute}
 	 */
 	public static <T> Attribute<T> newAttribute(String name) {
-		return newAttribute(name, null);
+		return newAttribute(name, (Class<T>) null);
 	}
 
 	/**
@@ -89,7 +89,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 	 * @return the new {@link Element}
 	 */
 	public static <T> Element<T> newElement(String name) {
-		return newElement(name, null);
+		return newElement(name, (Class<T>) null);
 	}
 
 	/**
@@ -121,7 +121,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 	/** The name of this unit. */
 	private final String	name;
 	/** The class of data pointed to by this unit. */
-	private final Class<T>	type;
+	private final Class<?>	type;
 
 	/**
 	 * Creates a new unit
@@ -131,11 +131,10 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 	 * @param type
 	 *            the type of this unit
 	 */
-	@SuppressWarnings("unchecked")
 	private XmlUnit(final String name, final Class<?> type) {
 		super(XId.newId(name));
 		this.name = name;
-		this.type = (Class<T>) type;
+		this.type = type;
 	}
 
 	/**
@@ -152,8 +151,9 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 	 * 
 	 * @return the type of data pointed to by this unit
 	 */
+	@SuppressWarnings("unchecked")
 	public Class<T> getType() {
-		return type;
+		return (Class<T>) type;
 	}
 
 	/** {@inheritDoc} */
@@ -165,10 +165,10 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 	/**
 	 * An xml attribute.
 	 * 
-	 * @param <T>
+	 * @param <B>
 	 *            type pointed to by this {@link Attribute}
 	 */
-	public static final class Attribute<T> extends XmlUnit<T> {
+	public static final class Attribute<B> extends XmlUnit<B> {
 		/**
 		 * Creates a new {@link Attribute} with the given name, pointing to the
 		 * data of the given class
@@ -181,9 +181,9 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 *             if the given type is not null or String.class but has no
 		 *             {@link TextFormat}
 		 */
-		private Attribute(String name, Class<?> type) throws IllegalArgumentException {
+		private <T extends B> Attribute(String name, Class<T> type) throws IllegalArgumentException {
 			super(name, type);
-			if (type != null && type != String.class) {
+			if (type != null && !type.equals(String.class)) {
 				validateArg("type must have a text format", TextFormat.getInstance(type), isNotNull());
 			}
 		}
@@ -197,7 +197,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 *            value to return if valueString can't be parsed
 		 * @return the parsed value
 		 */
-		public final T parse(String valueString, T defaultValue) {
+		public final B parse(String valueString, B defaultValue) {
 			try {
 				return parse(valueString);
 			} catch (XMLStreamException e) {
@@ -215,12 +215,12 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 *             if the given valueString can't be parsed
 		 */
 		@SuppressWarnings("unchecked")
-		public final T parse(String valueString) throws XMLStreamException {
+		public final B parse(String valueString) throws XMLStreamException {
 			if (getType() == null || getType() == String.class) {
-				return (T) valueString;
+				return (B) valueString;
 			}
 			try {
-				TextFormat<T> format = TextFormat.getInstance(getType());
+				TextFormat<B> format = TextFormat.getInstance(getType());
 				return format.parse(valueString);
 			} catch (IllegalArgumentException e) {
 				throw new XMLStreamException(e.getMessage());
@@ -238,7 +238,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 * @throws XMLStreamException
 		 *             if the write failed
 		 */
-		public final void write(final OutputElement xml, final T value) throws XMLStreamException {
+		public final void write(final OutputElement xml, final B value) throws XMLStreamException {
 			xml.setAttribute(getName(), value);
 		}
 	}
@@ -246,10 +246,10 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 	/**
 	 * An xml element.
 	 * 
-	 * @param <T>
+	 * @param <B>
 	 *            type pointed to by this {@link Element}
 	 */
-	public static final class Element<T> extends XmlUnit<T> {
+	public static final class Element<B> extends XmlUnit<B> {
 		/**
 		 * Creates a new {@link Element} with the given name, pointing to the
 		 * data of the given class
@@ -259,7 +259,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 * @param type
 		 *            class of data pointed to by the new {@link Element}
 		 */
-		private Element(String name, Class<?> type) {
+		private <T extends B> Element(String name, Class<T> type) {
 			super(name, type);
 		}
 
@@ -272,7 +272,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 *            the value to return if no element is read
 		 * @return the read element
 		 */
-		public T read(InputElement xml, T defaultValue) {
+		public B read(InputElement xml, B defaultValue) {
 			try {
 				return read(xml);
 			} catch (XMLStreamException e) {
@@ -289,8 +289,8 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 * @throws XMLStreamException
 		 *             if no element is read
 		 */
-		public T read(InputElement xml) throws XMLStreamException {
-			return getType() != null ? xml.get(getName(), getType()) : xml.<T> get(getName());
+		public B read(InputElement xml) throws XMLStreamException {
+			return getType() != null ? xml.get(getName(), getType()) : xml.<B> get(getName());
 		}
 
 		/**
@@ -304,7 +304,7 @@ public abstract class XmlUnit<T> extends AbstractXIdObject {
 		 * @throws XMLStreamException
 		 *             if the write failed
 		 */
-		public void write(OutputElement xml, T value) throws XMLStreamException {
+		public void write(OutputElement xml, B value) throws XMLStreamException {
 			if (getType() != null) {
 				xml.add(value, getName(), getType());
 			} else {

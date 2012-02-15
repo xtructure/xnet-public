@@ -583,10 +583,10 @@ public class GeneMap implements Collection<Gene> {
 
 	/** xml format for {@link GeneMap} */
 	private static final class GeneMapXmlFormat extends XmlFormat<GeneMap> {
-		@SuppressWarnings("unchecked")
-		private static final Element<List<NodeGene>>	NODE_GENE_ELEMENTS	= XmlUnit.newElement("nodes", ArrayList.class);
-		@SuppressWarnings("unchecked")
-		private static final Element<List<LinkGene>>	LINK_GENE_ELEMENTS	= XmlUnit.newElement("links", ArrayList.class);
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		private static final Element<List<NodeGene>>	NODE_GENE_ELEMENTS	= XmlUnit.<List<NodeGene>,ArrayList>newElement("nodes", ArrayList.class);
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		private static final Element<List<LinkGene>>	LINK_GENE_ELEMENTS	= XmlUnit.<List<LinkGene>,ArrayList>newElement("links", ArrayList.class);
 
 		private GeneMapXmlFormat() {
 			super(GeneMap.class);

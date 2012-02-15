@@ -157,7 +157,7 @@ public enum ValueType {
 	 * @return the v
 	 */
 	@SuppressWarnings("unchecked")
-	public <V extends Comparable<V>> V minValue() {
+	public <V extends Comparable<?>> V minValue() {
 		switch (this) {
 			case BOOLEAN:
 				return (V) new Boolean(false);
@@ -187,7 +187,7 @@ public enum ValueType {
 	 * @return the v
 	 */
 	@SuppressWarnings("unchecked")
-	public <V extends Comparable<V>> V maxValue() {
+	public <V extends Comparable<?>> V maxValue() {
 		switch (this) {
 			case BOOLEAN:
 				return (V) new Boolean(true);

@@ -70,7 +70,7 @@ public class NEATPopulationImpl extends AbstractNEATPopulation<GeneMap> {
 	}
 
 	private static final class NEATPopulationImplXmlFormat extends AbstractXmlFormat<GeneMap, NEATPopulationImpl> {
-		private static final Element<Genome<GeneMap>>	GENOME_ELEMENT	= XmlUnit.newElement("genome", NEATGenomeImpl.class);
+		private static final Element<Genome<GeneMap>>	GENOME_ELEMENT	= XmlUnit.<Genome<GeneMap>, NEATGenomeImpl>newElement("genome", NEATGenomeImpl.class);
 
 		protected NEATPopulationImplXmlFormat() {
 			super(NEATPopulationImpl.class);

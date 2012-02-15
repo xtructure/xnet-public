@@ -105,7 +105,7 @@ public class NodeGeneImpl extends AbstractNodeGene {
 	 *         .
 	 */
 	public double getActivation() {
-		return getParameter(NodeGene.ACTIVATION_ID);
+		return (Double) getParameter(NodeGene.ACTIVATION_ID);
 	}
 
 	/**

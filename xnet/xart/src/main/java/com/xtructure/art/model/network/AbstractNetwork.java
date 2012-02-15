@@ -342,8 +342,8 @@ public abstract class AbstractNetwork extends AbstractStandardXComponent impleme
 
 	/** base xml format for abstract networks */
 	protected static abstract class AbstractXmlFormat<T extends AbstractNetwork> extends AbstractXIdObject.AbstractXmlFormat<T> {
-		protected static final Element<Node>	NODE_ELEMENT	= XmlUnit.newElement("node", NodeImpl.class);
-		protected static final Element<Link>	LINK_ELEMENT	= XmlUnit.newElement("link", LinkImpl.class);
+		protected static final Element<Node>	NODE_ELEMENT	= XmlUnit.<Node,NodeImpl>newElement("node", NodeImpl.class);
+		protected static final Element<Link>	LINK_ELEMENT	= XmlUnit.<Link,LinkImpl>newElement("link", LinkImpl.class);
 
 		protected AbstractXmlFormat(Class<T> cls) {
 			super(cls);

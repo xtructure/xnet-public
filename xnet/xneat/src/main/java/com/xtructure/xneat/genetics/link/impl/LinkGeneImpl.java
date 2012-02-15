@@ -109,7 +109,7 @@ public final class LinkGeneImpl extends AbstractLinkGene {
 	 * @return the value of the weight in this {@link LinkGeneImpl}
 	 */
 	public double getWeight() {
-		return getParameter(LinkGene.WEIGHT_ID);
+		return (Double) getParameter(LinkGene.WEIGHT_ID);
 	}
 
 	/**

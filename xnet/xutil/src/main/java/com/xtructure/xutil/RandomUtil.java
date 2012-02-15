@@ -182,33 +182,39 @@ public class RandomUtil {
 			return max;
 		}
 		switch (type) {
-			case BOOLEAN: {
-				// if range is a boolean point, this method would have already
-				// returned, so...
-				return cls.cast(new Boolean(nextBoolean()));
-			}
-			case BYTE: {
-				return cls.cast(nextByte((Byte) min, (Byte) max));
-			}
-			case DOUBLE: {
-				return cls.cast(nextDouble((Double) min, (Double) max));
-			}
-			case FLOAT: {
-				return cls.cast(nextFloat((Float) min, (Float) max));
-			}
-			case INTEGER: {
-				return cls.cast(nextInteger((Integer) min, (Integer) max));
-			}
-			case LONG: {
-				return cls.cast(nextLong((Long) min, (Long) max));
-			}
-			case SHORT: {
-				return cls.cast(nextShort((Short) min, (Short) max));
-			}
-			default: {
-				// shouldn't happen
-				return null;
-			}
+		case BOOLEAN: {
+			// if range is a boolean point, this method would have already
+			// returned, so...
+			return cls.cast(new Boolean(nextBoolean()));
+		}
+		case BYTE: {
+			return cls
+					.cast(nextByte(Byte.class.cast(min), Byte.class.cast(max)));
+		}
+		case DOUBLE: {
+			return cls.cast(nextDouble(Double.class.cast(min),
+					Double.class.cast(max)));
+		}
+		case FLOAT: {
+			return cls.cast(nextFloat(Float.class.cast(min),
+					Float.class.cast(max)));
+		}
+		case INTEGER: {
+			return cls.cast(nextInteger(Integer.class.cast(min),
+					Integer.class.cast(max)));
+		}
+		case LONG: {
+			return cls
+					.cast(nextLong(Long.class.cast(min), Long.class.cast(max)));
+		}
+		case SHORT: {
+			return cls.cast(nextShort(Short.class.cast(min),
+					Short.class.cast(max)));
+		}
+		default: {
+			// shouldn't happen
+			return null;
+		}
 		}
 	}
 

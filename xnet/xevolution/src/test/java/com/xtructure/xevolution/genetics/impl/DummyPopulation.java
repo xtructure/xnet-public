@@ -42,7 +42,7 @@ public class DummyPopulation extends AbstractPopulation<String> {
 	public static final XmlFormat<DummyPopulation>	XML_FORMAT	= new PopulationXmlFormat();
 
 	private static final class PopulationXmlFormat extends AbstractXmlFormat<String, DummyPopulation> {
-		private static final Element<Genome<String>>	GENOME_ELEMENT	= XmlUnit.newElement("genome", DummyGenome.class);
+		private static final Element<Genome<String>>	GENOME_ELEMENT	= XmlUnit.<Genome<String>,DummyGenome>newElement("genome", DummyGenome.class);
 
 		protected PopulationXmlFormat() {
 			super(DummyPopulation.class);
