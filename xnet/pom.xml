@@ -4,7 +4,7 @@
 	<groupId>com.xtructure.xnet</groupId>
 	<artifactId>xnet</artifactId>
 	<packaging>pom</packaging>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
 	<name>Xtructure XNet</name>
 	<url>http://www.xtructure.com</url>
 
