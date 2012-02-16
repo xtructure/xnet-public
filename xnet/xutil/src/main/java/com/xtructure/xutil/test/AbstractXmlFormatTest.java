@@ -105,7 +105,7 @@ public abstract class AbstractXmlFormatTest<T> {
 	public final void newInstanceXMLReturnsExpectedInstance(T t) throws XMLStreamException {
 		// generate xml strings
 		String outXmlString = XmlWriter.write(t, xmlBinding, INDENT);
-		T newT = XmlReader.read(new StringReader(outXmlString), xmlBinding);
+		T newT = XmlReader.<T>read(new StringReader(outXmlString), xmlBinding);
 		outXmlString = XmlWriter.write(newT, xmlBinding, INDENT);
 		String expectedXmlString = generateExpectedXMLString(t);
 		// split strings at new lines

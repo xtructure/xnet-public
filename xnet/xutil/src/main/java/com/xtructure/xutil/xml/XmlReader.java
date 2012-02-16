@@ -63,19 +63,19 @@ public final class XmlReader {
 	 * read()s with xml source
 	 */
 	public static <V> V read(String xmlString) throws XMLStreamException {
-		return read(xmlString, null);
+		return XmlReader.<V>read(xmlString, null);
 	}
 
 	public static <V> V read(File inFile) throws IOException, XMLStreamException {
-		return read(inFile, null);
+		return XmlReader.<V>read(inFile, null);
 	}
 
 	public static <V> V read(InputStream in) throws XMLStreamException {
-		return read(in, null);
+		return XmlReader.<V>read(in, null);
 	}
 
 	public static <V> V read(Reader in) throws XMLStreamException {
-		return read(in, null);
+		return XmlReader.<V>read(in, null);
 	}
 
 	/*
@@ -84,14 +84,14 @@ public final class XmlReader {
 	 */
 	public static <V> V read(String xmlString, XMLBinding binding, V defaultObject) {
 		try {
-			return read(xmlString, binding);
+			return XmlReader.<V>read(xmlString, binding);
 		} catch (XMLStreamException e) {}
 		return defaultObject;
 	}
 
 	public static <V> V read(File inFile, XMLBinding binding, V defaultObject) {
 		try {
-			return read(inFile, binding);
+			return XmlReader.<V>read(inFile, binding);
 		} catch (IOException e) {//
 			e.printStackTrace();
 		} catch (XMLStreamException e) {
@@ -102,14 +102,14 @@ public final class XmlReader {
 
 	public static <V> V read(InputStream in, XMLBinding binding, V defaultObject) {
 		try {
-			return read(in, binding);
+			return XmlReader.<V>read(in, binding);
 		} catch (XMLStreamException e) {}
 		return defaultObject;
 	}
 
 	public static <V> V read(Reader in, XMLBinding binding, V defaultObject) {
 		try {
-			return read(in, binding);
+			return XmlReader.<V>read(in, binding);
 		} catch (XMLStreamException e) {}
 		return defaultObject;
 	}
@@ -120,7 +120,7 @@ public final class XmlReader {
 	public static <V> V read(String xmlString, XMLBinding binding) throws XMLStreamException {
 		StringReader in = null;
 		try {
-			return read(in = new StringReader(xmlString), binding);
+			return XmlReader.<V>read(in = new StringReader(xmlString), binding);
 		} finally {
 			if (in != null) {
 				in.close();
@@ -131,7 +131,7 @@ public final class XmlReader {
 	public static <V> V read(File inFile, XMLBinding binding) throws IOException, XMLStreamException {
 		FileReader in = null;
 		try {
-			return read(in = new FileReader(inFile), binding);
+			return XmlReader.<V>read(in = new FileReader(inFile), binding);
 		} finally {
 			if (in != null) {
 				in.close();
@@ -146,7 +146,7 @@ public final class XmlReader {
 			if (binding != null) {
 				reader.setBinding(binding);
 			}
-			return reader.read();
+			return reader.<V>read();
 		} finally {
 			if (reader != null) {
 				reader.close();
@@ -161,7 +161,7 @@ public final class XmlReader {
 			if (binding != null) {
 				reader.setBinding(binding);
 			}
-			return reader.read();
+			return reader.<V>read();
 		} finally {
 			if (reader != null) {
 				reader.close();
