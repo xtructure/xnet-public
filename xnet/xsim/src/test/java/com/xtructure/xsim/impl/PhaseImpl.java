@@ -23,9 +23,10 @@
 package com.xtructure.xsim.impl;
 
 import com.xtructure.xsim.XTime;
+import com.xtructure.xsim.XTime.Phase;
 
 /**
- * A simple implementation of {@link XTime.Phase} used for testing.
+ * A simple implementation of {@link Phase} used for testing.
  * 
  * @author Peter N&uuml;rnberg
  * 

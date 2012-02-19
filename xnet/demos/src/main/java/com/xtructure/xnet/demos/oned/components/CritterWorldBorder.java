@@ -32,7 +32,7 @@ import com.xtructure.xsim.impl.XAddressImpl;
 
 // TODO: Auto-generated Javadoc
 /**
- * A border between a {@link Critter} and a {@link World}.
+ * A border between a {@link OneDCritter} and a {@link World}.
  * 
  * @author Peter N&uuml;rnberg
  * 
