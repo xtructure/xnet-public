@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<TITLE>XNet 0.1</TITLE>
+</HEAD>
+<BODY>
+
+<h1>XNet version 0.1</h1>
+<P>
+<b>XNet</b> is a suite of Java software tools developed for creating discrete event simulations 
+and running evolutionary algorithms. While these tools are designed to work well together, they 
+are split into distinct packages so that they may also be used independently. The main packages are:
+<dl>
+	<dt>
+		<a href="#xsim">XSim</a> 
+	</dt>
+	<dd>
+		A discrete event simulation library. Simulations are modeled as a set of Components that pass state 
+		to one another and update themselves on command according to the phases of a defined Clock.
+	</dd>
+	<dt>
+		<a href="#xevolution">XEvolution</a> 
+	</dt>
+	<dd>	
+		An evolutionary algorithm library. Evolution is modeled as a set of Populations made up of individual 
+		Genomes that are transformed, evaluated, and culled from one generation to the next.
+	</dd>
+</dl> 
+
+Other <b>XNet</b> packages either provide supporting functionality or specialized extensions which are 
+useful in particular fields. For instance, there is an <a href="#xart">XART</a> package that provides an 
+implementation of an ART3 network for use with XSim, and an <a href="#xneat">XNEAT</A> package 
+that provides an implementation of the NEAT evolutionary algorithm for use with XEvolution. The 
+<a href="#xbatch">XBatch</a> package permits XSim simulations to be run in batches, useful for evaluating 
+the simulation performance of phenotypes for fitness purposes during evolution.
+    
+</BODY>
+</HTML>
