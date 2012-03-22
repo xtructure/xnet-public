@@ -346,15 +346,14 @@ public class Graph extends JPanel implements MouseInputListener, MouseWheelListe
 			// }
 			// yAxisLabelEnd = dataMaxValue;
 			// }
+			dataScale = graphHeight / (dataMaxValue - dataMinValue);
+			
+			drawTitleAndLabels(g);
+			for (int i = 0; i < dataPoints.size(); i++) {
+				plotData(g, dataPoints.get(i), i);
+			}
 		} finally {
 			dataLock.unlock();
-		}
-		dataScale = graphHeight / (dataMaxValue - dataMinValue);
-
-		drawTitleAndLabels(g);
-		for (int i = 0; i < dataPoints.size(); i++) {
-			List<Double> datas = dataPoints.get(i);
-			plotData(g, datas, i);
 		}
 	}
 
@@ -477,11 +476,11 @@ public class Graph extends JPanel implements MouseInputListener, MouseWheelListe
 	 *            the index of the color to draw
 	 */
 	private void plotData(Graphics g, List<Double> dataPoints, int colorIndex) {
-		if (dataPoints == null || dataPoints.isEmpty()) {
-			return;
-		}
-		dataLock.lock();
-		try {
+//		dataLock.lock();
+//		try {
+			if (dataPoints == null || dataPoints.isEmpty()) {
+				return;
+			}
 			int[] dataXs = new int[dataPoints.size()];
 			int[] dataYs = new int[dataPoints.size()];
 			double x = BORDER_L_WIDTH;
@@ -525,9 +524,9 @@ public class Graph extends JPanel implements MouseInputListener, MouseWheelListe
 			g.setColor(color);
 			g.drawString(label, yLabelX, yLabelY);
 			g.drawPolyline(dataXs, dataYs, dataPoints.size());
-		} finally {
-			dataLock.unlock();
-		}
+//		} finally {
+//			dataLock.unlock();
+//		}
 	}
 
 	/**

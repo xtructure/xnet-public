@@ -42,13 +42,13 @@ import javolution.xml.XMLObjectReader;
 import javolution.xml.stream.XMLStreamException;
 
 import com.sun.tools.javac.util.Pair;
-import com.xtructure.art.examples.twonode.LinkVisualization;
-import com.xtructure.art.examples.twonode.NodeVisualization;
 import com.xtructure.art.model.link.Link;
 import com.xtructure.art.model.link.LinkConfiguration;
 import com.xtructure.art.model.network.AbstractNetwork;
 import com.xtructure.art.model.node.Node;
 import com.xtructure.art.model.node.NodeConfiguration;
+import com.xtructure.xnet.demos.art.LinkVisualization;
+import com.xtructure.xnet.demos.art.NodeVisualization;
 import com.xtructure.xutil.id.XId;
 import com.xtructure.xutil.xml.ReadAttributes;
 import com.xtructure.xutil.xml.ReadElements;

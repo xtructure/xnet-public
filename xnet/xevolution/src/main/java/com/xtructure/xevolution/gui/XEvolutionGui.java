@@ -47,6 +47,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import org.json.simple.JSONArray;
+
 import com.xtructure.xevolution.evolution.EvolutionStrategy;
 import com.xtructure.xevolution.genetics.Genome;
 import com.xtructure.xevolution.genetics.Population;
@@ -57,8 +59,10 @@ import com.xtructure.xevolution.gui.components.GuiListener;
 import com.xtructure.xevolution.gui.components.MenuBar;
 import com.xtructure.xevolution.gui.components.PopulationPanel;
 import com.xtructure.xevolution.gui.components.StatusBar;
+import com.xtructure.xevolution.tool.PopulationData;
 import com.xtructure.xevolution.tool.data.DataTracker;
 import com.xtructure.xutil.coll.ListBuilder;
+import com.xtructure.xutil.id.XId;
 import com.xtructure.xutil.id.XValId;
 import com.xtructure.xutil.opt.FileXOption;
 import com.xtructure.xutil.opt.XOption;
@@ -82,90 +86,99 @@ import com.xtructure.xutil.opt.XOption;
  * @author Luis Guimbarda
  */
 public class XEvolutionGui {
-	
+
 	/** The Constant popLock. {@link Lock} for accessing population files */
-	private static final ReentrantLock		popLock					= new ReentrantLock();
-	
-	/** The Constant POPULATION_FILE_PATTERN. {@link Pattern} for population xml files */
-	private static final Pattern			POPULATION_FILE_PATTERN	= Pattern.compile("^\\D*(\\d+)\\.xml$");
-	
+	private static final ReentrantLock popLock = new ReentrantLock();
+
+	/**
+	 * The Constant POPULATION_FILE_PATTERN. {@link Pattern} for population xml
+	 * files
+	 */
+	private static final Pattern POPULATION_FILE_PATTERN = Pattern
+			.compile("^\\D*(\\d+)\\.xml$");
+
 	/** number of times to try and read population xml files before giving up. */
-	private static final int				RETRIES					= 5;
-	
+	private static final int RETRIES = 5;
+
 	/** list of {@link XOption} needed when loading an experiment. */
-	public static final List<XOption<?>>	OPTIONS;
-	
+	public static final List<XOption<?>> OPTIONS;
+
 	/** The Constant OUTPUT_OPTION. {@link FileXOption} for the output directory */
-	public static final FileXOption			OUTPUT_OPTION;
+	public static final FileXOption OUTPUT_OPTION;
 	static {
-		OUTPUT_OPTION = new FileXOption("output directory", "o", "outputDir", "directory to which population xml files are output");
+		OUTPUT_OPTION = new FileXOption("output directory", "o", "outputDir",
+				"directory to which population xml files are output");
 		OPTIONS = new ListBuilder<XOption<?>>()//
 				.add(OUTPUT_OPTION)//
 				.newImmutableInstance();
 	}
-	
+
 	/** index of the graphs tab. */
-	public static final int					GRAPHS_INDEX			= 0;
-	
+	public static final int GRAPHS_INDEX = 0;
+
 	/** index of the generations tab. */
-	public static final int					GENERATIONS_INDEX		= 1;
-	
+	public static final int GENERATIONS_INDEX = 1;
+
 	/** index of the genealogy tab. */
-	public static final int					GENEALOGY_INDEX			= 2;
-	
+	public static final int GENEALOGY_INDEX = 2;
+
 	/** the base string for the title of the gui. */
-	private final String					title;
-	
+	private final String title;
+
 	/** the {@link JFrame} of the gui. */
-	private final JFrame					frame;
-	
+	private final JFrame frame;
+
 	/** the list of observed population files. */
-	private final List<File>				populationFiles;
-	
+	private final List<File> populationFiles;
+
 	/** the {@link StatusBar} of the gui. */
-	private final StatusBar					statusBar;
-	
+	private final StatusBar statusBar;
+
 	/** the {@link MenuBar} of the gui. */
-	private final MenuBar					menuBar;
-	
+	private final MenuBar menuBar;
+
 	/** the {@link JTabbedPane} of the gui. */
-	private final JTabbedPane				tabbedPane;
-	
+	private final JTabbedPane tabbedPane;
+
 	/** the {@link JPanel} for the gui's {@link Graph}s. */
-	private final JPanel					graphPanel;
-	
+	private final JPanel graphPanel;
+
 	/** the number of data points to display in the gui's {@link Graph}s. */
-	private final int						bufferSize;
-	
+	private final int bufferSize;
+
 	/** The buffer count. */
-	private final int						bufferCount;
-	
+	private final int bufferCount;
+
 	/** map of attribute {@link XValId}s to their {@link Graph}s. */
-	private final Map<XValId<?>, Graph>		graphsMap;
-	
+	private final Map<XValId<?>, Graph> graphsMap;
+
 	/** the {@link JPanel} for the population and genome lists. */
-	private final JPanel					generationsPanel;
-	
+	private final JPanel generationsPanel;
+
 	/** the {@link PopulationPanel} for the population lists. */
-	private final PopulationPanel			populationPanel;
-	
+	private final PopulationPanel populationPanel;
+
 	/** the {@link GenomePanel} for the genome lists. */
-	private final GenomePanel				genomePanel;
-	
+	private final GenomePanel genomePanel;
+
 	/** the {@link GenealogyPanel} for the genealogy. */
-	private final GenealogyPanel			genealogyPanel;
-	
+	private final GenealogyPanel genealogyPanel;
+
 	/** The data tracker. */
-	private final DataTracker<?, ?>			dataTracker;
+	private final DataTracker<?, ?> dataTracker;
 
 	/**
 	 * Creates a new {@link XEvolutionGui}.
-	 *
-	 * @param title the base string for the title of the gui
-	 * @param visualizeData the visualize data
-	 * @param dataTracker the data tracker
+	 * 
+	 * @param title
+	 *            the base string for the title of the gui
+	 * @param visualizeData
+	 *            the visualize data
+	 * @param dataTracker
+	 *            the data tracker
 	 */
-	public XEvolutionGui(String title, VisualizeData visualizeData, DataTracker<?, ?> dataTracker) {
+	public XEvolutionGui(String title, VisualizeData visualizeData,
+			DataTracker<?, ?> dataTracker) {
 		this.title = title;
 		frame = new JFrame(title);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -179,7 +192,8 @@ public class XEvolutionGui {
 		frame.add(statusBar, BorderLayout.PAGE_END);
 		graphPanel = new JPanel();
 		graphPanel.setLayout(new GridLayout(0, 1));
-		bufferSize = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+		bufferSize = (int) Toolkit.getDefaultToolkit().getScreenSize()
+				.getWidth();
 		bufferCount = 3; // max,avg,min
 		graphsMap = new HashMap<XValId<?>, Graph>();
 		tabbedPane.addTab("Graphs", graphPanel);
@@ -193,7 +207,8 @@ public class XEvolutionGui {
 		genomePanel = new GenomePanel();
 		genomePanel.addSortByAttributeId(Genome.FITNESS_ATTRIBUTE_ID);
 		genomePanel.addSortByAttributeId(Genome.COMPLEXITY_ATTRIBUTE_ID);
-		genomePanel.getSortComboBox().setSelectedItem(Genome.FITNESS_ATTRIBUTE_ID);
+		genomePanel.getSortComboBox().setSelectedItem(
+				Genome.FITNESS_ATTRIBUTE_ID);
 		c.gridx = 0;
 		c.gridy = 0;
 		generationsPanel.add(populationPanel, c);
@@ -206,24 +221,79 @@ public class XEvolutionGui {
 		addGraph(Genome.FITNESS_ATTRIBUTE_ID);
 		addGraph(Genome.COMPLEXITY_ATTRIBUTE_ID);
 		this.dataTracker = dataTracker;
-		new GuiListener(populationPanel, genomePanel, genealogyPanel, visualizeData, dataTracker);
+		new GuiListener(populationPanel, genomePanel, genealogyPanel,
+				visualizeData, dataTracker);
 		frame.setResizable(true);
 		frame.pack();
 		frame.setVisible(true);
+		catchUp();
+	}
+
+	private void catchUp() {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				XEvolutionGui.this.menuBar.setLoadable(false);
+				List<XId> popIds = new ArrayList<XId>(dataTracker
+						.getPopulationDataManager().getIds());
+				Collections.sort(popIds);
+				XEvolutionGui.this.statusBar.startProgressBar(0, popIds.size());
+				int i = 0;
+				for (XId id : popIds) {
+					popLock.lock();
+					try {
+						PopulationData<?> popData = dataTracker
+								.getPopulationDataManager().getObject(id);
+						// TODO add population files
+						populationFiles.add(popData.getPopulationFile());
+						statusBar.setProgressBar(i++);
+						statusBar.setMessage("Loading population : "
+								+ popData.getId());
+						// + populationFile.getName());
+						for (Object key : popData.keySet()) {
+							Object val = popData.get(key);
+							if (!JSONArray.class.equals(val.getClass())) {
+								continue;
+							}
+							XValId<?> keyId = XValId.TEXT_FORMAT.parse(key
+									.toString());
+							Graph graph = graphsMap.get(keyId);
+							if (graph == null) {
+								graph = addGraph(keyId);
+							}
+							graph.addData(Double.valueOf(((JSONArray) val).get(
+									0).toString()), Double
+									.valueOf(((JSONArray) val).get(1)
+											.toString()), Double
+									.valueOf(((JSONArray) val).get(2)
+											.toString()));
+						}
+					} finally {
+						popLock.unlock();
+					}
+					frame.repaint();
+				}
+				populationPanel.addAllItems(populationFiles);
+				statusBar.clearMessage();
+				statusBar.clearProgressBar();
+				XEvolutionGui.this.menuBar.setLoadable(true);
+				frame.repaint();
+			}
+		}).run();
 	}
 
 	/** The watch dir thread. {@link Thread} used to read population xml files */
-	private Thread	watchDirThread;
+	private Thread watchDirThread;
 
 	/**
 	 * Creates a background thread to watch the output directory where.
-	 *
+	 * 
 	 * {@link Population} xml files are written. The thread polls the file
 	 * system once every two seconds for new files.
 	 */
 	public void watchDir() {
 		watchDirThread = new Thread(new Runnable() {
-			private long	newest	= 0l;
+			private long newest = 0l;
 
 			@SuppressWarnings("unchecked")
 			@Override
@@ -236,7 +306,8 @@ public class XEvolutionGui {
 						File[] newFiles = watchDir.listFiles(new FileFilter() {
 							@Override
 							public boolean accept(File pathname) {
-								return pathname.lastModified() > newest && pathname.getName().endsWith(".xml");
+								return pathname.lastModified() > newest
+										&& pathname.getName().endsWith(".xml");
 							}
 						});
 						if (newFiles.length == 0) {
@@ -253,12 +324,16 @@ public class XEvolutionGui {
 						Collections.sort(newFilesList, new Comparator<File>() {
 							@Override
 							public int compare(File o1, File o2) {
-								Matcher matcher = POPULATION_FILE_PATTERN.matcher(o1.getName());
+								Matcher matcher = POPULATION_FILE_PATTERN
+										.matcher(o1.getName());
 								if (matcher.matches()) {
-									int age1 = Integer.parseInt(matcher.group(1));
-									matcher = POPULATION_FILE_PATTERN.matcher(o2.getName());
+									int age1 = Integer.parseInt(matcher
+											.group(1));
+									matcher = POPULATION_FILE_PATTERN
+											.matcher(o2.getName());
 									if (matcher.matches()) {
-										int age2 = Integer.parseInt(matcher.group(1));
+										int age2 = Integer.parseInt(matcher
+												.group(1));
 										return age1 - age2;
 									}
 								}
@@ -267,27 +342,42 @@ public class XEvolutionGui {
 						});
 						populationFiles.addAll(newFilesList);
 						populationPanel.addAllItems(newFilesList);
-						XEvolutionGui.this.statusBar.startProgressBar(0, newFilesList.size());
+						XEvolutionGui.this.statusBar.startProgressBar(0,
+								newFilesList.size());
 						int i = 0;
 						for (File populationFile : newFilesList) {
-							newest = Math.max(newest, populationFile.lastModified());
+							newest = Math.max(newest,
+									populationFile.lastModified());
 							statusBar.setProgressBar(i++);
-							statusBar.setMessage("Loading population : " + populationFile.getName());
+							statusBar.setMessage("Loading population : "
+									+ populationFile.getName());
 							Population<?> population = null;
 							for (int j = 0; j < RETRIES; j++) {
 								popLock.lock();
 								try {
-									population = dataTracker.processPopulation(populationFile);
+									population = dataTracker
+											.processPopulation(populationFile);
 									for (@SuppressWarnings("rawtypes")
-									final XValId valueId : population.getGenomeAttributeIds()) {
+									final XValId valueId : population
+											.getGenomeAttributeIds()) {
 										Graph graph = graphsMap.get(valueId);
 										if (graph == null) {
 											graph = addGraph(valueId);
 										}
-										graph.addData(//
-												((Number) population.getHighestGenomeByAttribute(valueId).getAttribute(valueId)).doubleValue(),//
-												population.getAverageGenomeAttribute(valueId),//
-												((Number) population.getLowestGenomeByAttribute(valueId).getAttribute(valueId)).doubleValue());
+										graph.addData(
+												//
+												((Number) population
+														.getHighestGenomeByAttribute(
+																valueId)
+														.getAttribute(valueId))
+														.doubleValue(),//
+												population
+														.getAverageGenomeAttribute(valueId),//
+												((Number) population
+														.getLowestGenomeByAttribute(
+																valueId)
+														.getAttribute(valueId))
+														.doubleValue());
 									}
 									// success
 									break;
@@ -310,9 +400,11 @@ public class XEvolutionGui {
 								for (XValId<?> valueId : graphsMap.keySet()) {
 									Graph graph = graphsMap.get(valueId);
 									if (graph == null) {
-										graph = new Graph(valueId.getBase(), bufferSize, 3);
+										graph = new Graph(valueId.getBase(),
+												bufferSize, 3);
 										graphsMap.put(valueId, graph);
-										menuBar.addGraphCheckbox(graph, graphPanel, false);
+										menuBar.addGraphCheckbox(graph,
+												graphPanel, false);
 									}
 									graph.addData(0.0, 0.0, 0.0);
 								}
@@ -330,7 +422,7 @@ public class XEvolutionGui {
 
 	/**
 	 * Returns the base title string of this {@link XEvolutionGui}.
-	 *
+	 * 
 	 * @return the base title string of this {@link XEvolutionGui}
 	 */
 	public String getBaseTitle() {
@@ -339,8 +431,9 @@ public class XEvolutionGui {
 
 	/**
 	 * Adds the graph.
-	 *
-	 * @param valueId the value id
+	 * 
+	 * @param valueId
+	 *            the value id
 	 * @return the graph
 	 */
 	private Graph addGraph(final XValId<?> valueId) {

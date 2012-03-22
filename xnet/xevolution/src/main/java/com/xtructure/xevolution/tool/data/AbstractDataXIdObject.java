@@ -27,6 +27,8 @@ import static com.xtructure.xutil.valid.ValidateUtils.isOfExactType;
 import static com.xtructure.xutil.valid.ValidateUtils.not;
 import static com.xtructure.xutil.valid.ValidateUtils.validateArg;
 
+import java.util.Set;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONAware;
 import org.json.simple.JSONObject;
@@ -38,16 +40,19 @@ import com.xtructure.xutil.id.XIdObjectManager;
 
 /**
  * The Class AbstractDataXIdObject.
- *
- * @param <D> the generic type
+ * 
+ * @param <D>
+ *            the generic type
  * @author Luis Guimbarda
  */
-public abstract class AbstractDataXIdObject<D extends AbstractDataXIdObject<D>> extends AbstractXIdObject implements DataXIdObject<D> {
-	
+public abstract class AbstractDataXIdObject<D extends AbstractDataXIdObject<D>>
+		extends AbstractXIdObject implements DataXIdObject<D> {
+
 	/**
 	 * Extracts the id for the {@link DataXIdObject} from the given json.
-	 *
-	 * @param json the json
+	 * 
+	 * @param json
+	 *            the json
 	 * @return the XId
 	 */
 	protected static XId extractId(Object json) {
@@ -57,10 +62,10 @@ public abstract class AbstractDataXIdObject<D extends AbstractDataXIdObject<D>> 
 	}
 
 	/** indicates whether the data has been written. */
-	private boolean				written;
-	
+	private boolean written;
+
 	/** contains the data. */
-	private final JSONObject	jsonObject	= new JSONObject();
+	private final JSONObject jsonObject = new JSONObject();
 
 	/**
 	 * Creates a new {@link AbstractDataXIdObject}. The created data is
@@ -73,7 +78,8 @@ public abstract class AbstractDataXIdObject<D extends AbstractDataXIdObject<D>> 
 	 * @param observed
 	 *            the object from which the data is derived
 	 */
-	protected AbstractDataXIdObject(XId id, XIdObjectManager<D> manager, Object... observed) {
+	protected AbstractDataXIdObject(XId id, XIdObjectManager<D> manager,
+			Object... observed) {
 		super(id, manager);
 		this.written = false;
 		processObserved(manager, observed);
@@ -97,33 +103,38 @@ public abstract class AbstractDataXIdObject<D extends AbstractDataXIdObject<D>> 
 
 	/**
 	 * Process the observed data. Called by
-	 *
-	 * @param manager the manager
-	 * @param observed the data to process.
-	 * {@link #AbstractDataXIdObject(XId, XIdObjectManager, Object...)}.
+	 * 
+	 * @param manager
+	 *            the manager
+	 * @param observed
+	 *            the data to process.
+	 *            {@link #AbstractDataXIdObject(XId, XIdObjectManager, Object...)}
+	 *            .
 	 */
-	protected abstract void processObserved(XIdObjectManager<D> manager, Object... observed);
+	protected abstract void processObserved(XIdObjectManager<D> manager,
+			Object... observed);
 
-	/**
-	 * Adds the given key/value pair to this {@link DataXIdObject}.
-	 *
-	 * @param key data key
-	 * @param value data value
-	 * @throws IllegalArgumentException if data has already been added with the given key
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.xtructure.xevolution.tool.DataXIdObject#put(java.lang.Object,
+	 * java.lang.Object)
 	 */
 	@SuppressWarnings("unchecked")
-	protected final void put(Object key, Object value) throws IllegalArgumentException {
-		validateArg(String.format("%s doesn't alread have %s", getId(), key), jsonObject, not(containsKey(key)));
+	@Override
+	public final void put(Object key, Object value)
+			throws IllegalArgumentException {
+		validateArg(String.format("%s doesn't alread have %s", getId(), key),
+				jsonObject, not(containsKey(key)));
 		jsonObject.put(key, value);
 	}
 
-	/**
-	 * Returns the data value in this {@link DataXIdObject} with the given key.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param key
-	 *            data key
-	 * @return the data value in this {@link DataXIdObject} with the given key.
+	 * @see com.xtructure.xevolution.tool.DataXIdObject#get(java.lang.Object)
 	 */
+	@Override
 	public final Object get(Object key) {
 		return jsonObject.get(key);
 	}
@@ -131,9 +142,18 @@ public abstract class AbstractDataXIdObject<D extends AbstractDataXIdObject<D>> 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.xtructure.xevolution.tool.DataXIdObject#isWritten()
+	 * @see com.xtructure.xevolution.tool.DataXIdObject#keySet()
 	 */
 	@Override
+	public Set<?> keySet() {
+		return jsonObject.keySet();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.xtructure.xevolution.tool.DataXIdObject#isWritten()
+	 */
 	public final boolean isWritten() {
 		return written;
 	}

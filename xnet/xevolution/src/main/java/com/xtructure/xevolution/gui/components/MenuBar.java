@@ -48,6 +48,7 @@ public class MenuBar extends JMenuBar {
 
 	/** the file menu in this {@link MenuBar} */
 	private final JMenu			fileMenu;
+	private final JMenuItem loadMenuItem;
 	/** the view menu in this {@link MenuBar} */
 	private final JMenu			viewMenu;
 	/** the list of graphs whose visibility is toggled in the view menu */
@@ -66,7 +67,7 @@ public class MenuBar extends JMenuBar {
 	 */
 	public MenuBar(final XEvolutionGui gui, final JFrame frame, final String title) {
 		fileMenu = new JMenu("File");
-		JMenuItem loadMenuItem = new JMenuItem(new AbstractAction("Load...") {
+		loadMenuItem = new JMenuItem(new AbstractAction("Load...") {
 			private static final long	serialVersionUID	= 1L;
 
 			@Override
@@ -122,5 +123,9 @@ public class MenuBar extends JMenuBar {
 			graphPanel.add(graph);
 		}
 		viewMenu.add(showGraphMenuItem);
+	}
+	
+	public void setLoadable(boolean loadable){
+		loadMenuItem.setEnabled(loadable);
 	}
 }

@@ -241,8 +241,9 @@ public class XId implements Comparable<XId> {
 			return 1;
 		}
 		return new CompareToBuilder()//
-				.append(this.toString(), o.toString())//
-				.toComparison();
+		.append(base, o.base) //
+		.append(instanceNums.toArray(), o.instanceNums.toArray()) //
+		.toComparison();
 	}
 
 	/**

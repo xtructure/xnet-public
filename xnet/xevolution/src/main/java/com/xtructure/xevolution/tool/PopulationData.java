@@ -21,6 +21,8 @@
  */
 package com.xtructure.xevolution.tool;
 
+import java.io.File;
+
 import com.xtructure.xevolution.genetics.Population;
 import com.xtructure.xutil.id.XId;
 import com.xtructure.xutil.id.XIdObjectManager;
@@ -32,6 +34,7 @@ import com.xtructure.xutil.id.XIdObjectManager;
  * @author Luis Guimbarda
  */
 public interface PopulationData<D extends PopulationData<D>> extends DataXIdObject<D> {
+	public static final String FILENAME = "filename";
 	
 	/** the name of the fittest genome data. */
 	public static final String	FITTEST_GENOME	= "fittest";
@@ -42,6 +45,8 @@ public interface PopulationData<D extends PopulationData<D>> extends DataXIdObje
 	 * @return the fittest genome id
 	 */
 	public XId getFittestGenomeId();
+	
+	public File getPopulationFile();
 
 	/**
 	 * A factory for creating PopulationData objects.

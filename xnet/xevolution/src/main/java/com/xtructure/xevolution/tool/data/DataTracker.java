@@ -159,7 +159,8 @@ public final class DataTracker<P extends PopulationData<P>, G extends GenealogyD
 		Population<?> population = XmlReader.read(populationFile, (Population<?>) null);
 		if (population != null) {
 			population.refreshStats();
-			populationDataFactory.getOrCreateInstance(population, populationDataManager);
+			PopulationData<?> popData = populationDataFactory.getOrCreateInstance(population, populationDataManager);
+			popData.put(PopulationData.FILENAME, populationFile.toString());
 			for (Genome<?> genome : population) {
 				genealogyDataFactory.getOrCreateInstance(genome, populationFile, genealogyDataManager);
 			}

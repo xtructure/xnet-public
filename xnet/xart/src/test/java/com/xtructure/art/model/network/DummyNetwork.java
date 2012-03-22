@@ -27,8 +27,6 @@ import java.util.Set;
 
 import javolution.xml.stream.XMLStreamException;
 
-import com.xtructure.art.examples.twonode.LinkVisualization;
-import com.xtructure.art.examples.twonode.NodeVisualization;
 import com.xtructure.art.model.link.Link;
 import com.xtructure.art.model.node.Node;
 import com.xtructure.xsim.gui.XVisualization;
@@ -54,12 +52,12 @@ public class DummyNetwork extends AbstractNetwork {
 	}
 
 	@Override
-	public LinkVisualization getLinkVisualization() {
+	public XVisualization<StandardTimePhase> getLinkVisualization() {
 		return null;
 	}
 
 	@Override
-	public NodeVisualization getNodeVisualization() {
+	public XVisualization<StandardTimePhase> getNodeVisualization() {
 		return null;
 	}
 

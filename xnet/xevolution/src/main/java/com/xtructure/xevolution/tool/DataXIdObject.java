@@ -21,6 +21,8 @@
  */
 package com.xtructure.xevolution.tool;
 
+import java.util.Set;
+
 import org.json.simple.JSONAware;
 
 import com.xtructure.xutil.id.XIdObject;
@@ -28,8 +30,9 @@ import com.xtructure.xutil.id.XIdObjectManager;
 
 /**
  * The Interface DataXIdObject.
- *
- * @param <D> the generic type
+ * 
+ * @param <D>
+ *            the generic type
  * @author Luis Guimbarda
  */
 public interface DataXIdObject<D extends DataXIdObject<D>> extends XIdObject {
@@ -43,10 +46,34 @@ public interface DataXIdObject<D extends DataXIdObject<D>> extends XIdObject {
 
 	/**
 	 * Sets the {@link #isWritten()} indicator.
-	 *
-	 * @param written the new written
+	 * 
+	 * @param written
+	 *            the new written
 	 */
 	public void setWritten(boolean written);
+
+	/**
+	 * Returns the data value in this {@link DataXIdObject} with the given key.
+	 * 
+	 * @param key
+	 *            data key
+	 * @return the data value in this {@link DataXIdObject} with the given key.
+	 */
+	public Object get(Object key);
+
+	/**
+	 * Adds the given key/value pair to this {@link DataXIdObject}.
+	 * 
+	 * @param key
+	 *            data key
+	 * @param value
+	 *            data value
+	 * @throws IllegalArgumentException
+	 *             if data has already been added with the given key
+	 */
+	public void put(Object key, Object value) throws IllegalArgumentException;
+
+	public Set<?> keySet();
 
 	/**
 	 * Returns a {@link JSONAware} representation of this {@link DataXIdObject}.
@@ -57,19 +84,23 @@ public interface DataXIdObject<D extends DataXIdObject<D>> extends XIdObject {
 
 	/**
 	 * A factory for creating DataXIdObject objects.
-	 *
-	 * @param <D> the generic type
-	 * {@link DataXIdObject} object factory interface
+	 * 
+	 * @param <D>
+	 *            the generic type {@link DataXIdObject} object factory
+	 *            interface
 	 */
 	public interface DataXIdObjectFactory<D extends DataXIdObject<D>> {
-		
+
 		/**
 		 * Creates instances of {@link DataXIdObject}.
-		 *
-		 * @param json the json
-		 * @param manager the manager
+		 * 
+		 * @param json
+		 *            the json
+		 * @param manager
+		 *            the manager
 		 * @return the D
 		 */
 		public D createInstance(JSONAware json, XIdObjectManager<D> manager);
 	}
+
 }

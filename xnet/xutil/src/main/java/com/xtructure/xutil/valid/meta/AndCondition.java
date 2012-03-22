@@ -21,9 +21,6 @@
  */
 package com.xtructure.xutil.valid.meta;
 
-import static com.xtructure.xutil.valid.ValidateUtils.hasSizeAtLeast;
-import static com.xtructure.xutil.valid.ValidateUtils.validateArg;
-
 import java.util.List;
 
 import javolution.xml.stream.XMLStreamException;
@@ -96,7 +93,6 @@ public final class AndCondition extends AbstractMetaCondition {
 	 */
 	public AndCondition(List<Condition> conditions) throws IllegalArgumentException {
 		super(conditions);
-		validateArg("conditions", conditions, hasSizeAtLeast(2));
 	}
 
 	/**
